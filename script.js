@@ -1,5 +1,3 @@
-console.log("Hello World");
-
 let humanScore = 0;
 let computerScore = 0;
 
@@ -25,12 +23,9 @@ function playRound(humanChoice) {
   const human = humanChoice.toLowerCase();
   const computer = getComputerChoice();
 
-  console.log(`You chose: ${human}`);
-  console.log(`Computer chose: ${computer}`);
   let roundResult = `You chose: ${human}, Computer chose: ${computer}. `;
 
   if (human === computer) {
-    console.log(`It's a tie for this round! Both chose ${human}.`);
     roundResult += `It's a tie!`;
   } else if (
     (human === "rock" && computer === "scissors") ||
@@ -38,15 +33,12 @@ function playRound(humanChoice) {
     (human === "paper" && computer === "rock")
   ) {
     humanScore++;
-    console.log(`You win this round! ${human} beats ${computer}.`);
     roundResult += `You win! ${human} beats ${computer}.`;
   } else {
     computerScore++;
-    console.log(`Computer wins this round! ${computer} beats ${human}.`);
     roundResult += `Computer wins! ${computer} beats ${human}.`;
   }
   resultsDiv.textContent = roundResult;
-  console.log(`Current Score: Human - ${humanScore}, Computer - ${computerScore}`);
   scoreDiv.textContent = `Human: ${humanScore} - Computer: ${computerScore}`;
 }
 
