@@ -19,6 +19,7 @@ function getHumanChoice() {
 function playGame() {
   let humanScore = 0;
   let computerScore = 0;
+  let round = 1;
 
   function playRound(humanChoice, computerChoice) {
     // Ensure humanChoice is not null (e.g. user cancelled prompt)
@@ -48,20 +49,20 @@ function playGame() {
     console.log(`Current Score: Human - ${humanScore}, Computer - ${computerScore}`);
   }
 
-  console.log("Welcome to Rock Paper Scissors! Best of 5 rounds.");
+  console.log("Welcome to Rock Paper Scissors! The game continues until you cancel a round.");
 
-  for (let i = 0; i < 5; i++) {
-    console.log(`\n--- Round ${i + 1} of 5 ---`);
+  while (true) {
+    console.log(`\n--- Round ${round} ---`);
     const humanSelection = getHumanChoice();
     
-    if (!humanSelection) { // If user cancels prompt in getHumanChoice
+    if (!humanSelection) { 
         console.log("You cancelled the round. Game aborted.");
-        // Optionally, decide if game should end or skip round. Here, we'll abort.
-        return; 
+        break; 
     }
 
     const computerSelection = getComputerChoice();
     playRound(humanSelection, computerSelection);
+    round++; 
   }
 
   console.log("\n--- Game Over ---");
