@@ -40,6 +40,26 @@ function playRound(humanChoice) {
   }
   resultsDiv.textContent = roundResult;
   scoreDiv.textContent = `Human: ${humanScore} - Computer: ${computerScore}`;
+
+  // Check for a winner
+  if (humanScore === 5 || computerScore === 5) {
+    endGame();
+  }
+}
+
+function endGame() {
+  let finalMessage = "Game Over! ";
+  if (humanScore === 5) {
+    finalMessage += "You win the game!";
+  } else if (computerScore === 5) {
+    finalMessage += "Computer wins the game!";
+  }
+  resultsDiv.textContent = finalMessage;
+
+  // Disable buttons
+  rockButton.disabled = true;
+  paperButton.disabled = true;
+  scissorsButton.disabled = true;
 }
 
 // Event Listeners
